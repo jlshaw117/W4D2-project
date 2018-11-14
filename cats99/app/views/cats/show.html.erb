@@ -1,0 +1,27 @@
+<%#= render 'cat', cat: @cat, action: :show %>
+
+<table>
+  <tr>
+    <td>name</td>
+    <td>sex</td>
+    <td>birth_date</td>
+    <td>color</td>
+    <td>description</td>
+    
+    <td></td>
+  </tr>
+  <tr>
+    <td><%= @cat.name %></td>
+    <td><%= @cat.sex %> </td>
+    <td><%= @cat.birth_date %> </td>
+    <td><%= @cat.color %> </td>
+    <td><%= @cat.description %></td>
+  </tr>
+   
+</table>
+<ul>
+  <% Cat.find(@cat.id).rental_requests.order(:start_date).pluck(:start_date,:end_date).each do |req| %>
+    <li>start_date:<%= req[0] %> end_date:<%= req[1] %>  </li>
+    <!-- <li></li> -->
+    <% end %>
+</ul>
